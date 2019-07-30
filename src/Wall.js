@@ -16,5 +16,5 @@ export class Wall extends Entity {
 		canvas.drawImage(this.img, this.x, this.y, 128, 108);
 	}
 
-	update(elapsedSec) {}
+	update(elapsed) {}
 }

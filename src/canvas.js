@@ -32,4 +32,12 @@ export class GameCanvas {
 	
 	get height() { return VIEWPORT_HEIGHT; } 
 	get width() { return VIEWPORT_WIDTH; }
+
+	get viewportRatio() {
+    	return SCREEN_VIEWPORT_RATIO;
+  	}
+
+  	get htmlElement() {
+    	return this.canvasElement;
+  	}
 }
