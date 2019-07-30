@@ -2,7 +2,7 @@
 
 const assets = require('./assets.js');
 import { Entity } from './Entity.js';
-import GameCanvas from './canvas.js';
+import {GameCanvas} from './canvas.js';
 import { type Bounds, doBoundsIntersect } from './mathTypes.js';
 
 type State = 'DESCENDING' | 'ATTACKING';
@@ -44,8 +44,8 @@ export default class Monster extends Entity {
 
 	testWallCollision(bounds: Bounds) {
 		const monsterBounds = {
-	    	x: this.xPosition,
-    		y: this.yPosition,
+	    	x: this.x,
+    		y: this.y,
     		width: 128,
     		height: 128
     	};

@@ -4,12 +4,12 @@ import { GameCanvas } from './canvas.js';
 import Monster from './Monster.js';
 import { Wall } from './Wall.js';
 import { ToolPalette } from './toolPalette.js';
-import { InputHelper } from './inputHelper.js';
+import InputHelper from './inputHelper.js';
 import GameplayGrid from './gameplayGrid.js';
 
 const assets = require('./assets.js');
 
-const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
+const gameCanvas = new GameCanvas((document.getElementById('main-canvas'): any));
 new InputHelper(gameCanvas);
 const wall = new Wall(25, 150);
 const grid = new GameplayGrid();

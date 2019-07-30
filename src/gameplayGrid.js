@@ -3,7 +3,7 @@
 const assets = require('./assets.js');
 import { Entity } from './Entity.js';
 import Monster from './Monster.js';
-import GameCanvas from './canvas.js';
+import {GameCanvas} from './canvas.js';
 import { type Bounds } from './mathTypes.js';
 const COLUMN_SIZE = 120, ROW_SIZE = 120, NUM_COLUMNS = 6;
 

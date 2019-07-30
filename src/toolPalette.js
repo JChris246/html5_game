@@ -1,9 +1,21 @@
+// @flow
+
 const assets = require('./assets.js');
 import { Entity } from './Entity.js';
-import { InputHelper } from './inputHelper.js';
+import {GameCanvas} from './canvas.js';
+import GameplayGrid from './gameplayGrid.js';
+import InputHelper from './inputHelper.js';
+import { type Bounds, type Point } from './mathTypes.js';
 
 export class ToolPalette extends Entity {
-	constructor(canvas, grid) {
+	isPlacingWall: boolean;
+	wasMouseDown: boolean;
+  	wallToolBounds: Bounds;
+  	grid: GameplayGrid;
+  	wallToolImage: Image;
+  	wallGrabPos: Point;
+
+	constructor(canvas: GameCanvas, grid :GameplayGrid) {
 		super();
 		this.isPlacingWall = false;
 		this.wasMouseDown = false;
@@ -15,7 +27,7 @@ export class ToolPalette extends Entity {
 		return assets.loadImage('images/Wall.png').then(img => { this.wallToolImage = img; });
 	}
 
-	draw(canvas) {
+	draw(canvas: GameCanvas) {
 		canvas.fillRect('#ffffff', 0, canvas.height - 130, canvas.width, 130);
 		canvas.fillRect('#333333', 0, canvas.height - 133, canvas.width, 3);
 		canvas.drawImage(this.wallToolImage, this.wallToolBounds.x, this.wallToolBounds.y, this.wallToolBounds.width, this.wallToolBounds.height);
@@ -27,7 +39,7 @@ export class ToolPalette extends Entity {
 			        this.wallToolBounds.height);
 	}
 
-	update(elapsed) {
+	update(elapsed: number) {
 		if(_mouseInBounds(this.wallToolBounds)) {
 			if (!this.wasMouseDown && InputHelper.instance.isMouseDown) {
 				this.isPlacingWall = true; 
@@ -49,6 +61,6 @@ export class ToolPalette extends Entity {
 	}
 }
 
-function _mouseInBounds(bounds) { 
+function _mouseInBounds(bounds: Bounds) { 
 	return InputHelper.instance.mouseX > bounds.x && InputHelper.instance.mouseX < bounds.x + bounds.width && InputHelper.instance.mouseY > bounds.y && InputHelper.instance.mouseY < bounds.y + bounds.height;
 }
